@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admitted</title>
+    <link rel="stylesheet" href="commonStyles.css" />
+  </head>
+
+  <body>
+    <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="applied.html">Applied Jobs</a></div>
+      <div><a href="bookmark.html">Bookmarks</a></div>
+    </div>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job Applied</th>
+          </tr>
+        </thead>
+        <tbody id="body"></tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    //you need to code here
+
+    let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
+    bookmarks.map(function (obj, index, bookmarks){
+        let tr = document.createElement("tr");
+        
+        let name = document.createElement("td");
+        name.innerText = obj.Name;
+        
+        let email = document.createElement("td");
+        email.innerText = obj.Email;
+        
+        let jobApplied = document.createElement("td");
+        jobApplied.innerText = obj.jobType;
+        
+        tr.append(name, email, jobApplied);
+        document.querySelector("tbody").append(tr);
+    });
+  </script>
+</html>
